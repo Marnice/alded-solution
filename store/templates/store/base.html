@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al ded solution | Buy & Sell</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Jiji-style Header -->
+    <header class="jiji-header">
+        <div class="container header-top">
+            <div class="logo">
+                <a href="/">Al ded <span>solution</span></a>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="What are you looking for?">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+
+                        <div class="header-actions">
+                <a href="#"><i class="far fa-user"></i> Account</a>
+                <a href="{% url 'referrals' %}" style="color: var(--jiji-green); font-weight: bold;"><i class="fas fa-gift"></i> Refer & Earn</a>
+                <a href="{% url 'cart_detail' %}" class="cart-link"><i class="fas fa-shopping-cart"></i> Cart</a>
+                <a href="#" class="post-ad-btn">+ SELL</a>
+            </div>
+        </div>
+        
+        <!-- Full Category Navigation -->
+        <div class="header-bottom">
+            <div class="container nav-links">
+                <a href="/">Home</a>
+                <a href="/#shop">Perfumes</a>
+                <a href="/#shop">Watches</a>
+                <a href="/#shop">Fashion</a>
+                <a href="/#shop">Shoes</a>
+                <a href="/#shop">Electronics</a>
+                <a href="/#shop">Gifts & Home</a>
+                <a href="/#shop" style="color: #d0021b; font-weight: bold;">Offers</a>
+                <a href="/#shop">Brands</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container main-content">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Jiji-style Footer -->
+    <footer class="jiji-footer">
+        <div class="container footer-content">
+            <div class="footer-col">
+                <h4>Al ded solution</h4>
+                <p>Buy and sell everything from electronics and fashion to perfumes and more. The best marketplace for premium goods.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Popular Categories</h4>
+                <a href="/#shop">Perfumes</a>
+                <a href="/#shop">Watches</a>
+                <a href="/#shop">Fashion</a>
+                <a href="/#shop">Shoes</a>
+                <a href="/#shop">Electronics</a>
+            </div>
+            <div class="footer-col">
+                <h4>Customer Service</h4>
+                <a href="#">Help Center</a>
+                <a href="#">Safety Tips</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Al ded solution. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

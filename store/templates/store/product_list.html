@@ -1,0 +1,59 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+    <!-- Simple Banner -->
+    <div class="jiji-banner">
+        <h1>Find everything you need on Al ded solution</h1>
+        <p style="color: #7a7a7a;">Explore our latest collections of perfumes, clothing, shoes, and electronics.</p>
+    </div>
+
+    <!-- Brands Section -->
+    <div style="background: #fff; border: 1px solid #e2e2e2; border-radius: 4px; padding: 20px; margin-bottom: 20px; text-align: center;">
+        <h3 style="font-size: 16px; margin-bottom: 15px; color: #555;">Featured Brands</h3>
+        <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; opacity: 0.6;">
+            <h2 style="font-family: 'Playfair Display', serif; margin: 0;">DIOR</h2>
+            <h2 style="font-family: 'Playfair Display', serif; margin: 0;">CHANEL</h2>
+            <h2 style="font-family: 'Playfair Display', serif; margin: 0;">ROLEX</h2>
+            <h2 style="font-family: 'Playfair Display', serif; margin: 0;">APPLE</h2>
+            <h2 style="font-family: 'Playfair Display', serif; margin: 0;">NIKE</h2>
+        </div>
+    </div>
+
+    <!-- Product Section -->
+    <div id="shop">
+        <div class="product-grid">
+            {% for product in products %}
+                <div class="product-card">
+                    {% with product.variants.first as variant %}
+                        
+                        <a href="{% url 'product_detail' product.id %}">
+                            {% if variant and variant.image %}
+                                <img src="{{ variant.image.url }}" alt="{{ product.name }}" class="product-image">
+                            {% else %}
+                                <div class="product-image" style="display: flex; align-items: center; justify-content: center; color: #aaa;">
+                                    No Image
+                                </div>
+                            {% endif %}
+                        </a>
+
+                        <div class="product-info">
+                            {% if variant %}
+                                <div class="product-price">${{ variant.price }}</div>
+                            {% else %}
+                                <div class="product-price">Out of stock</div>
+                            {% endif %}
+                            
+                            <h2>{{ product.name }}</h2>
+                            <div class="product-brand">{{ product.brand }}</div>
+                            
+                            <a href="{% url 'product_detail' product.id %}" class="btn">View Details</a>
+                        </div>
+
+                    {% endwith %}
+                </div>
+            {% empty %}
+                <p style="grid-column: 1/-1; text-align: center; padding: 50px; background: #fff; border: 1px solid #e2e2e2;">No products in the store yet. Add some in the admin panel!</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
